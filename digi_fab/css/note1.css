@@ -1,0 +1,133 @@
+/* CSS: 左画像・右テキスト レイアウト */
+/* カスタムプロパティで色や余白を調整しやすく */
+:root{
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --radius: 12px;
+  --gap: 20px;
+  --max-width: 90%;
+  --image-aspect: 16/9; /* 画像比の想定（幅/高さ） */
+}
+
+/* 全体ラップ */
+.media-list{
+  max-width: var(--max-width);
+  margin: 32px auto;
+  padding: 0 16px;
+  display: grid;
+  gap: 12px;
+}
+
+/* カード本体 */
+.media-card{
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 画像と文字の間の余白 */
+  background-color: #fff;
+  border: 0px solid #ccc;
+  border-radius: 0%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 12px;
+  margin: 20px auto;
+  max-width: 90%;
+  min-width: 90%;
+  }
+
+div.section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 24px;
+  margin: 24px 0;
+}
+
+
+/* 画像エリア（左） */
+.media-image{
+  flex: 0 0 40%; /* 左幅を比率で固定（レスポンシブで変える） */
+  min-width: 50%;
+  max-width: 70%;
+  height: auto;
+  display: block;
+  position: relative;
+  ;
+}
+
+/* img をカバーさせる（切り取り） */
+.media-image img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  aspect-ratio: var(--image-aspect); /* 対応ブラウザで高さを自動調整 */
+}
+
+/* テキスト側（右） */
+.media-body{
+  padding: 2px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 4px;
+  color: #111827;
+  margin-left: 0
+}
+
+/* タイトル等 */
+.media-title{
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.media-lead{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* CTA */
+.media-cta{
+  margin-top: 8px;
+  align-self: flex-start;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background.18s ease, transform .12s ease;
+}
+
+.media-cta:hover,
+.media-cta:focus{
+  background: rgba(37,99,235,0.08);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* --- レスポンシブ --- */
+/* 狭い画面では縦積みにして画像を上に */
+@media (max-width: 820px){
+  .media-card{
+    flex-direction: column;
+  }
+  .media-image{
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  .media-image img{
+    aspect-ratio: 3/2;
+  }
+  .media-body{
+    padding: 16px;
+  }
+}
+
+/* さらに狭い画面で文字サイズを調整 */
+@media (max-width: 420px){
+  .media-title{ font-size: 1.05rem; }
+  .media-body{ padding: 12px; }
+  :root{ --gap: 12px; }
+}
