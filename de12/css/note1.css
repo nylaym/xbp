@@ -57,7 +57,6 @@ div.section {
   display: block;
   margin-bottom: 10px;
 }
-
 /* img をカバーさせる（切り取り） */
 .media-image img{
   width: 100%;
@@ -74,16 +73,24 @@ div.section {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  gap: 4px;
+  gap: 2px;
   color: #111827;
   margin-left: 0
 }
+.media-card h3, .media-card h4, .media-card h5 {
+  margin: 8px 0;
+}
+.media-card p {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
 
 /* タイトル等 */
 .media-title{
   margin: 0;
   font-size: 1.25rem;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .media-lead{
