@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>にら・Pythonゲームソース</title>
+  <link rel="stylesheet" href="../css/note1.css">
+  <link rel="shortcut icon" href="./images/xbp.ico">
+  <style>
+    .container {
+      display: flex;
+      align-items: flex-start; 
+      margin-bottom: 20px;
+    }
+    .container img {
+      width: 350px; 
+      height: auto;
+      margin-right: 50px; 
+      border-radius: 20px;
+    }
+    .text {
+      max-width: 800px;
+      line-height: 2.4;
+    }
+  </style>
+</head>
+
+<!-- HTML: 複数カードでも使える汎用マークアップ -->
+<section class="media-list">
+  <article class="media-card">
+    
+    <div class="media-body">
+      <h2 class="media-title">ソースコード</h2>
+      
+      <p>
+        <code>
+<ol style="list-style:decimal-leading-zero outside;left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+<li style="background-color:#EFF;">#西区のガンマン</li>
+<li style="background-color:#EEF;">#シンプルですごい</li>
+<li style="background-color:#EFF;">import time</li>
+<li style="background-color:#EEF;">import random</li>
+<li style="background-color:#EFF;">#キーボード上のターゲット</li>
+<li style="background-color:#EEF;">TARGET_LIST=[</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;'1', '2', '3', '4', '5', '6', '7', '8', '9', '0',</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', </li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'z', 'x', 'c', 'v', 'b', 'n', 'm'</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;]</li>
+<li style="background-color:#EEF;">#西区の情景リスト</li>
+<li style="background-color:#EFF;">SGINS_LIST = [</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"風が止んだ...。潮の香りが強まる。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"遠くで汽笛が鳴ったぞ。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"相手の目に、クイーンズスクエアの光が反射した！",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"ランドマークタワーの影が、地面を横切る。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"ベンチに置かれたコーヒーが揺れた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"電子音が、静寂を破る。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"船が、ゆっくりと港に入ってくる。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"観覧車が、頂上で一瞬止まった。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"コンクリートの熱を感じる。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"観光客の笑い声が、一瞬遠ざかった。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"ビル風が強い",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"恋春日和だ",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"インターコンチネンタルホテルの帆のような屋根が、午後の光を浴びている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"夜の帳（とばり）が下り、みなとみらい大橋の照明が点灯した。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"クイーンズタワーの窓に、空の青さが映り込んでいる。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"工事現場のクレーンが、空へ向かって高く伸びている。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"海面に、きらきらと光の粒が散っている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"日本丸のマストが、晴れた空をまっすぐに指している。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"運河の水面が、ゆっくりと動いている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"ストリートミュージシャンのギターの音色が、遠くから近づいてくる。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"グランモール公園の噴水が、高い弧を描いた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"シティホテルから、観光ヘリコプターの音が響く。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"地下鉄のホームへ続く階段（みなとみらい駅）で、急ぐ足音が重なった。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"横浜ベイブリッジが、薄い朝霧の中にぼんやりと浮かんでいる。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"展示ホールのガラス壁に、無数の雲が流れていく。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"潮の満ち引きで、ぷかりさん橋が静かに上下する。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"汽車道のレールの上を、光が反射しながら伸びていた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"営業車が、高速道路へと続く坂道を上る。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"マークイズのテラス席から、街路樹の新緑が見える。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"公園のベンチで、誰かが読みかけの本を置き忘れた。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"夕焼けの色が濃くなり、ビル群がシルエットになった。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"船のロープが、岸壁の金具に擦れる音が聞こえる。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"野毛山公園の方向から、微かに子どもの歓声が届いた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"換気の効いたオフィスビルの窓越しに、疲れた顔が見える。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"埠頭の倉庫のシャッターに、錆びたチェーンがかかっている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"観光客が、カメラで一斉にコスモクロック21を撮った。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"海風が強まり、スーツの裾が大きくはためいた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"美術館前の広場で、太陽を追うように影が移動する。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"横浜駅周辺の雑踏の音が、途切れることなく続いている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"夜景の中、遠くの家々の明かりが黄色い点となって瞬く。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"戸部の坂道で、郵便配達のバイクがエンジン音を響かせた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"横浜駅西口の地下街から、冷房の匂いが立ち昇る。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"藤棚商店街で、コロッケを揚げる香ばしい匂いが漂ってきた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"野毛山動物園のライオンの咆哮が、住宅街の方まで微かに届いた。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"岡野交差点の信号待ちで、トラックの荷台の青いシートが揺れていた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"戸部公園の砂場で、幼稚園児の楽しそうな声が響く。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"横浜駅前の高層ビルが、太陽を遮り、長い影を作った。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"野毛山の尾根筋を、古くからの家々が連なって建っている。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"平沼橋の下を流れる川面に、夕方の光が反射した。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"地元住民が、戸部駅の改札を急ぎ足で通り抜けていく。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"掃部山公園の木々の葉が、静かに風に揺れている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"高島で、潮の香りが急に薄れた。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"横浜駅東口のバスターミナルで、旅行者が出発を待っている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"藤棚の古いアパートのベランダに、植木鉢が並べられている。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"高島エリアのオフィスビルの合間から、遠くの山がが霞んで見えた。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"横浜駅の喧騒が、一本裏の道に入るとピタリと止む。",</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"戸部の路地裏で、猫がゆっくりと日向ぼっこをしている。",</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;"みなとみらいのタワーマンションの最上階に、飛行機が飛ぶ光が見える。"</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;"恋春日和だ",</li>
+<li style="background-color:#EFF;">]</li>
+<li style="background-color:#EEF;">#ライバルによって、制限時間やターゲットにバリエーションが欲しい</li>
+<li style="background-color:#EFF;">RIVAL_LIST=["コトブキ","コガネ","ヒノデ","サクラギ","トベ","ヒラヌマ","コヤス"]</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">#スタート画面</li>
+<li style="background-color:#EEF;">PLESS=random.choice(TARGET_LIST)</li>
+<li style="background-color:#EFF;">print("press enter")</li>
+<li style="background-color:#EEF;">input("西区のガンマン")</li>
+<li style="background-color:#EFF;">print("press enter")</li>
+<li style="background-color:#EEF;">input("操作:キーボード上のキーで狙いをつけエンターで射撃")</li>
+<li style="background-color:#EFF;">input("READY TO START?")</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">#パラメータ、変数</li>
+<li style="background-color:#EEF;">RC=0</li>
+<li style="background-color:#EFF;">WS=1.0</li>
+<li style="background-color:#EEF;">PC=0</li>
+<li style="background-color:#EFF;">TL=2</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">#始動　空気感をつくるのに時間の調節、セリフは大事</li>
+<li style="background-color:#EEF;">time.sleep(1)</li>
+<li style="background-color:#EFF;">RIVAL_NAME=random.choice(RIVAL_LIST)</li>
+<li style="background-color:#EEF;">print("ライバル",RIVAL_NAME,"が現れた")</li>
+<li style="background-color:#EFF;">time.sleep(3)</li>
+<li style="background-color:#EEF;">print("ポケットの銃に指をかけた。")</li>
+<li style="background-color:#EFF;">time.sleep(1)</li>
+<li style="background-color:#EEF;">print("合図を待て")</li>
+<li style="background-color:#EFF;">time.sleep(2)</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;"></li>
+<li style="background-color:#EEF;">while  RC != 10:#なんで排反なん？？？？</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;print(random.choice(SGINS_LIST))</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;RC = random.randint(3, 10)</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;WS = random.uniform(2, 4)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(WS)</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li style="background-color:#EEF;">else:</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;TARGET = random.choice(TARGET_LIST)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print("今だ",TARGET,"をうて")</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;ST=time.time()</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;PC = input()</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(0.2)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;print("乾いた銃声が響いた")</li>
+<li style="background-color:#EFF;">#入力の判定</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;if PC == TARGET:</li>
+<li style="background-color:#EFF;">#入力1       </li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ET=time.time()</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TIMES =ET-ST</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count=0</li>
+<li style="background-color:#EFF;">#時間の判定</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if TIMES &lt;= TL:</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while count&lt;=3:</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count+=1</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("…")</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(1)</li>
+<li style="background-color:#EFF;">#時間1</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("ターゲットをうちたおした。平穏は守られた")</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(round(TIMES,2),"sec")</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while count&lt;=3:</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count+=1</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("…")</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(1)</li>
+<li style="background-color:#EEF;">#時間2</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("ターゲットに打ち負けた。致命傷を負った")</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(round(TIMES-TL,2),"秒遅かった")</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;else:</li>
+<li style="background-color:#EEF;">&nbsp;#入力2</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while count&lt;=3:</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count+=1</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("…")</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(1)</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("誤った人をうった。投獄された。")</li>
+<li style="background-color:#EEF;">#終わり</li>
+<li style="background-color:#EFF;">time.sleep(3)</li>
+<li style="background-color:#EEF;">print("終")</li>
+<li style="background-color:#EFF;"></li>
+<li style="background-color:#EEF;">#やりたいことリスト</li>
+<li style="background-color:#EFF;">#ライバルによる個性</li>
+<li style="background-color:#EEF;">#ストーリーの作り込み</li>
+<li style="background-color:#EFF;"></li>
+</ol></code>
+      </p>
+      <a class="media-cta" href="#">詳しく見る →</a>
+    </div>
+  </article>
+  
+
+
+</body>
+</html>
