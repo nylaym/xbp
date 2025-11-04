@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>にら・ルーレット</title> <!--頭に名前つける-->
+  <link rel="stylesheet" href="../css/note1.css">
+  <link rel="shortcut icon" href="./images/xbp.ico">
+  <style>
+    .container {
+      display: flex;
+      align-items: flex-start; 
+      margin-bottom: 20px;
+    }
+    .container img {
+      width: 350px; 
+      height: auto;
+      margin-right: 50px; 
+      border-radius: 20px;
+    }
+    .text {
+      max-width: 800px;
+      line-height: 2.4;
+    }
+  </style>
+</head>
+<section class="media-list" id="index">
+    <article class="media-card">
+      <div class="media-body">
+        <h1 class="media-title"></h1>
+
+        <h2>Contents</h2>
+        <ol>
+          <li>概要</li>
+          <li>コンセプト</li>
+          <li>制作の気づき</li>
+     
+        </ol>
+      </div>
+    </article>
+  </section>
+<!-- HTML: 複数カードでも使える汎用マークアップ -->
+<section class="media-list">
+  <article class="media-card">
+    <figure class="media-image" aria-hidden="false">
+      <img src="../images/rou_1.jpg" alt="うわ！猫だ！">
+      <iframe width="350" 
+      height="622" 
+      src="https://www.youtube.com/embed/OuUFlVAYUik" 
+      title="2025年11月4日" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      .,allowfullscreen></iframe>
+    </figure>
+
+    <div class="media-body">
+      <h2 class="media-title">概要</h2>
+      <p class="media-lead">ルーレット</p>
+      <p>「心を動かすもの」というテーマのもと、ルーレットをつくりました。<br>
+        このルーレットは普通のルーレットと違って、揺れながら、巻き戻りながらも最後に針をさします。<br>
+        そのさまを自分たちが決め事をするとき、迷ったりする様と重ねあわせて見ればちょっと共感できるかもしれません<br>
+        その点で「心を動かすもの」だと思います。
+
+
+      </p>
+    </div>
+  </article>
+</section>
+<section class="media-list">
+  <article class="media-card">
+    <figure class="media-image" aria-hidden="false">
+      <img src="../images/rou_2.jpg" alt="うわ！猫だ！">
+       <img src="../images/rou_4.jpg" alt="うわ！猫だ！">
+
+    </figure>
+
+    <div class="media-body">
+      <h2 class="media-title">コンセプト</h2>
+      <p class="media-lead">制作の流れ</p>
+      <p>
+        まず、「心を動かす」の意味が全く思い浮かばなかったので、心に関する慣用句を書き出しました。<br><p>
+        <font size="5">心</font>
+        <ul>
+          <li>弾む</li>
+          <li>折れる</li>
+          <li>沈む</li>
+          <li>刻む</li>
+          <li>支える</li>
+          <li>ゆれる</li>
+        </ul>
+        <p>
+          など結構な種類がありました。そこから物理的な「心」の動きで表現することに決めました。<br>
+          いくつかの物理的に心を動かすアイディアを経て最終的に迷う心を表すために「ルーレット」を作ることに決めました。
+
+      </p>
+    </div>
+  </article>
+</section>
+
+<section class="media-list">
+  <article class="media-card">
+    <figure class="media-image" aria-hidden="false">
+      <img width="200" src="../images/ink_3.png" alt="うわ！猫だ！">
+       <img src="../images/ink_1.png" alt="うわ！猫だ！">
+       <img src="../images/ink_2.png" alt="うわ！猫だ！">
+
+    </figure>
+
+    <div class="media-body">
+      <h2 class="media-title">制作の気づき</h2>
+      <p class="media-lead">Fusion360 inkscape レーザーカット</p>
+      今回の制作はFusion360で形を起こしてからInkscapeでレーザーカット用データを作る流れでした。<br>
+      その上で、気になったことや調べたことをまとめます。
+      <ol>
+        <li>平面パーツで立体物を組む時は3DCADで確認しながら進めないとまず無理</li>
+        <li>外内側の角部分にラジアルをつける時、均等な肉厚をつける設定が意外と難しい</li>
+        <li>→   <a class="media-cta" href="https://xcentricmold.com/designing-for-plastics/?utm_source=chatgpt.com">外側R=内側R+板厚できれいになるそうです</a></li>
+        <li>部材同士のはめあいは授業で紹介があった寸法でちょうどよかった。他の板厚、部材でもつかえる値を見つけたい</li>
+        <li>FusionからinkscapeにDXFを取り込むとき、仮想線も一緒についてきて消すのが面倒だった</li>
+        <li>MACのinkscpaeは若干不安定な気がする</li>
+        <li>板材を節約するために部材をつめつめにするためにさまざまな整列の仕方を試した。何気に一番時間がかかった作業</li>
+        <li>組み立て時、円盤のバランスを取るのがとても難しかった。CADで設計している時は地球に重力があることを忘れていた</li>
+        <li>円盤を吊り下げるためにゴム紐を用いたが、弾性力が強く全く結べなかった。ゴム紐は結べない</li>
+        <li>ゴム紐の弾性力のおかげでルーレットが捻るように逆回転するようになった。他にも使えそう</li>
+        <li>最初の写真の就職・進学ルーレットの字はmizunoに書いてもらいました。すごくきれい</li>
+    </ol>
+    <h4>感想</h4>
+    <p>
+      3Dプリンタが立体を印刷するのに対し、レーザーカッターは平面の板から作品を切り出す。折り紙のように完成を想像しながら設計するのが難しかった。
+      しかし、彫刻ができたりアクリル板が切り抜けたりとその可能性は多大にあった。さまざまなソフト、技術、機械を組みわせてものがつくれるようになりたい。
+    </p>
+    </div>
+  </article>
+</section>
+
+  <!-- 必要なら同じ構造を繰り返す -->
+</section>
+<iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</body>
+</html>
+
+
+
+    
+
+
+</body>
+</html>

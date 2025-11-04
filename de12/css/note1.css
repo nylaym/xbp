@@ -8,6 +8,15 @@
   --gap: 20px;
   --max-width: 90%;
   --image-aspect: 16/9; /* 画像比の想定（幅/高さ） */
+  
+}
+@font-face {
+	font-family: 'MyFont';
+	src: url(../font/hiraginokaku.ttc);
+}
+
+body {
+	font-family: MyFont;
 }
 
 /* 全体ラップ */
@@ -24,7 +33,7 @@
   display: flex;
   align-items: center;
   gap: 10px; /* 画像と文字の間の余白 */
-  background-color: #fff;
+  background-color: #e3ebec;
   border: 0px solid #ccc;
   border-radius: 0%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -35,7 +44,7 @@
   }
 
 div.section {
-  background: #fff;
+  background: #d4f5ff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   padding: 24px;
