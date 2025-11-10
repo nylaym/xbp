@@ -1,0 +1,95 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat GPT APIを用いたHTML生成プログラム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chat GPT APIを用いたHTML生成プログラム</h1>
+
+        <section>
+            <h2>機能</h2>
+            <ul>
+                <li>Userの文章をinputでとりプロンプトと共にChat GPTに投げる</li>
+                <li>返答をHTMLに書き出し、ブラウザで起動する</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>やりたいこと</h2>
+            <ul>
+                <li>CSSも作って欲しい</li>
+                <li>全く課題が間に合ってない自分こそが使うべき</li>
+                <li>画像を貼りたい</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>気づき</h2>
+            <div class="note">
+                <p>pipインストールしなくてもいい標準ライブラリがある</p>
+                <code>from openai import OpenAI</code><br>
+                <code>import webbrowser</code><br>
+                <code>import os</code><br>
+            </div>
+            <p>ターミナルに本文情報を書き込むと、inputなのにzshにコマンド認識されてGPTにmessageが正しく送信されない → python input()は改行されたデータを扱えないことが原因</p>
+        </section>
+
+        <section>
+            <h2>AIコーディング</h2>
+            <ul>
+                <li>元のプログラムを作成 → 動かない → AIに聞く → 直す → 動かない → AIに聞く</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>参考</h2>
+            <p>詳細情報: <a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q10276488765" target="_blank">https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q10276488765</a></p>
+        </section>
+    </div>
+</body>
+
+</html>
+```
