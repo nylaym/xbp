@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ドント方式議席分配ツール</title>
+
+  <link rel="stylesheet" href="../css/note1.css">
+  <link rel="shortcut icon" href="../images/xbp.ico">
+
+  <style>
+    iframe{
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    ul.tool-list{
+      margin: 0;
+      padding-left: 20px;
+      line-height: 2;
+    }
+
+    .tool-list li{
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 作ったもの -->
+<section class="media-list">
+
+  <article class="media-card">
+
+    <figure class="media-image">
+      <!-- スクショ画像に差し替え -->
+      <img
+        src="../images/dont-tool.png"
+        alt="ドント方式議席分配ツール"
+      >
+    </figure>
+
+    <div class="media-body">
+
+      <h2 class="media-title">
+        比例代表選挙のためのドント方式による議席分配ツール
+      </h2>
+
+      <p class="media-lead">
+        比例代表選挙の議席配分を
+        自動計算するためのWebツール
+      </p>
+
+      <p>
+        普段、比例代表選挙を行う際、
+        ドント方式による議席配分を
+        手作業で計算するのは
+        非常に不便だと感じていました。
+      </p>
+
+      <p>
+        特に政党数や議席数が増えると、
+        計算ミスが起こりやすく、
+        作業時間も長くなります。
+      </p>
+
+      <p>
+        そこで、
+        <strong>
+          政党名・得票数・擁立人数
+        </strong>
+        を入力するだけで、
+        自動的に議席数を算出できる
+        ツールを開発しました。
+      </p>
+
+      <p>
+        CSVアップロードにも対応しており、
+        大量の選挙データも
+        一括で処理できます。
+      </p>
+
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- 使い方 -->
+<section class="media-list">
+
+  <article class="media-card">
+
+    <div class="media-body">
+
+      <h2 class="media-title">
+        使い方
+      </h2>
+
+      <ul class="tool-list">
+        <li>
+          総議席数を入力
+        </li>
+
+        <li>
+          政党名・得票数・擁立人数を入力
+          （またはCSVアップロード）
+        </li>
+
+        <li>
+          「計算」ボタンを押す
+        </li>
+
+        <li>
+          ドント方式による
+          議席配分結果が表示される
+        </li>
+      </ul>
+
+      <p>
+        CSVテンプレートも
+        ダウンロード可能にしており、
+        選挙データ入力を簡単にしています。
+      </p>
+
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- 動画 -->
+<section class="media-list">
+
+  <article class="media-card">
+
+    <div class="media-body">
+
+      <h2 class="media-title">
+        使い方動画
+      </h2>
+
+      <p class="media-lead">
+        実際の操作方法を動画で紹介しています。
+      </p>
+
+   <iframe width="1004" height="565" src="https://www.youtube.com/embed/9zh-22Fzt9I" title="ドント方式議席分配ツール" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- 使用技術 -->
+<section class="media-list">
+
+  <article class="media-card">
+
+    <div class="media-body">
+
+      <h2 class="media-title">
+        使用技術
+      </h2>
+
+      <ul class="tool-list">
+
+        <li>
+          <strong>Python</strong><br>
+          ドント方式による
+          議席分配ロジックを実装
+        </li>
+
+        <li>
+          <strong>Flask</strong><br>
+          Webアプリケーション化に使用。
+          入力画面と計算処理を接続
+        </li>
+
+        <li>
+          <strong>CSV</strong><br>
+          選挙データの一括読み込みに使用
+        </li>
+
+      </ul>
+
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- まとめ -->
+<section class="media-list">
+
+  <article class="media-card">
+
+    <div class="media-body">
+
+      <h2 class="media-title">
+        まとめ
+      </h2>
+
+      <p>
+        本ツールでは、
+        比例代表選挙における
+        ドント方式の議席配分を
+        自動化しました。
+      </p>
+
+      <p>
+        手作業による
+        計算の煩雑さを減らし、
+        計算ミスの防止や
+        作業効率化を
+        実現しています。
+      </p>
+
+      <p>
+        また、
+        CSVアップロード機能により、
+        大規模な選挙データにも
+        対応可能です。
+      </p>
+
+    </div>
+
+  </article>
+
+</section>
+
+</body>
+</html>
