@@ -1,54 +1,229 @@
 @charset "utf-8";
-/* 冒頭でimport */
-@import url('https://fonts.googleapis.com/css?family=Raleway:700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=japanese');
-/* フォントを指定したいところで */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
 
-logo img{
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover; /* 画像のトリミング */
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e3e3e3;
+    --accent: #0b5fff;
+    --accent-soft: rgba(11, 95, 255, .07);
+    --focus: #0b5fff;
 }
 
-logotohome img{
-    border-radius: 70%;
-    width: 70px;
-    height: 70px;
-    object-fit: cover; /* 画像のトリミング */
-}
+* { box-sizing: border-box; }
 
-
-
-/* ========== common ========== */
 html, body {
-	font-size: 16px;
-	font-family: sans-serif;
-	color: #393939;
-    margin-left: 15px;
-    margin-bottom: 40px;
-	background: #efefef;
-}
-h1{
-    text-indent: 0em;
-}
-h2{
-    margin-left: 1em;
-    margin-top: 1em;
-}
-h3{
-    margin-left: 2em;
-}
-div{
-    margin-top: 1em;
-    margin-left: 3em;
-}
-p{
-    margin-left: 3em;
-}
-span.blackback{
-    text-indent: 3em;
-    background: #393939;
-    color: #efefef;
+    font-size: 16px;
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.85;
 }
 
+body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--text);
+    color: #fff;
+    padding: .6rem 1rem;
+    z-index: 10;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+}
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+/* ---------- header ---------- */
+logotohome {
+    display: block;
+    margin-bottom: 1.25rem;
+}
+
+logotohome img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+}
+
+.eyebrow {
+    display: block;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    color: var(--muted);
+    margin-bottom: .4rem;
+}
+
+h1 {
+    text-indent: 0;
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 0 0 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ---------- section headings ---------- */
+h2 {
+    margin: 2.5rem 0 1rem;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+h3 {
+    margin: 1.25rem 0 .5rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+h4 {
+    margin: 1rem 0 .35rem;
+    font-size: .95rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+/* ---------- body copy ---------- */
+div {
+    margin-top: .75rem;
+}
+
+p {
+    margin: .5rem 0;
+    color: var(--text);
+}
+
+.note {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+a {
+    color: var(--accent);
+    text-underline-offset: .2em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+figure {
+    margin: 1.5rem 0;
+}
+
+figure img {
+    display: block;
+    width: 100%;
+}
+
+figcaption {
+    margin-top: .5rem;
+    font-size: .85rem;
+    color: var(--muted);
+}
+
+.image-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* ---------- nav list (top-level menus) ---------- */
+main > ol, main > ul {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    border-top: 1px solid var(--border);
+}
+
+main > ol > li, main > ul > li {
+    border-bottom: 1px solid var(--border);
+}
+
+main > ol > li > a, main > ul > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem .25rem;
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color .12s ease, color .12s ease, padding-left .12s ease;
+}
+
+main > ol > li > a::after, main > ul > li > a::after {
+    content: "\203A";
+    color: var(--muted);
+    font-weight: 700;
+}
+
+main > ol > li > a:hover, main > ul > li > a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding-left: .75rem;
+}
+
+main > ol > li > a:hover::after, main > ul > li > a:hover::after {
+    color: var(--accent);
+}
+
+/* ---------- content-level lists ---------- */
+div ul, div ol {
+    padding-left: 1.4rem;
+    margin: .5rem 0;
+}
+
+div ul li, div ol li {
+    margin: .3rem 0;
+}
+
+/* ---------- misc ---------- */
+span.blackback {
+    background: var(--text);
+    color: #fff;
+    padding: .05em .5em;
+    border-radius: 2px;
+}
+
+xmp {
+    display: block;
+    white-space: pre-wrap;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .85rem;
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 2rem 1rem 3rem;
+    }
+}

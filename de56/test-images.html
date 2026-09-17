@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>画像テストページ | XBP</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+    <logotohome>
+    <a href="../index.html"><img src="../images/0_XBlogo.png" alt="XBPロゴ"></a>
+    </logotohome>
+    <span class="eyebrow">XBP Portfolio</span>
+    <h1>画像テストページ</h1>
+    <p class="note">
+        画像を使っているde12のページ（路上観察・路上調査・htmlの基礎知識）から代表的な画像を集め、
+        de56の新デザインでどう表示されるかをまとめたテストページです。
+        CSSでは <code>max-width: 100%</code>・<code>border-radius: 4px</code>・<code>border: 1px solid</code> のみを指定し、
+        影（box-shadow）やホバー拡大などの装飾は使っていません。
+    </p>
+
+    <main id="main">
+        <div>
+            <h2>路上観察（<a href="../de12/notes/note-2.html" target="_blank">de12 第2回ノート</a>）</h2>
+            <p>記事幅いっぱいの写真1枚と、2枚並べた比較写真の例です。</p>
+
+            <figure>
+                <img src="../de12/images/kanban6.jpg" alt="高島エリアの散策ルートと発見場所をマークした地図">
+                <figcaption>高島エリアの散策マップ（元ページでは幅40%指定だったものを記事幅いっぱいに変更）</figcaption>
+            </figure>
+
+            <div class="image-row">
+                <figure>
+                    <img src="../de12/images/kanban1.jpg" alt="洋食居酒屋の看板・正面">
+                    <figcaption>洋食居酒屋の看板（正面）</figcaption>
+                </figure>
+                <figure>
+                    <img src="../de12/images/kanban2.jpg" alt="洋食居酒屋の看板・側面">
+                    <figcaption>洋食居酒屋の看板（側面）</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div>
+            <h2>路上調査（<a href="../de12/notes/note-3.html" target="_blank">de12 第3回ノート</a>）</h2>
+            <p>グラフ画像を2枚並べた例です。図が小さくても枠線と角丸だけで十分見やすくなります。</p>
+
+            <div class="image-row">
+                <figure>
+                    <img src="../de12/images/glaph/map-1.png" alt="移動ルート地図">
+                    <figcaption>移動ルート地図</figcaption>
+                </figure>
+                <figure>
+                    <img src="../de12/images/glaph/t-1.png" alt="定点調査：カバンを持っているか">
+                    <figcaption>定点調査：カバンを持っているか</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div>
+            <h2>htmlの基礎知識（<a href="../de12/hp1.html" target="_blank">de12 学習ページ</a>）</h2>
+            <p>もとのページで幅40%指定だった説明図です。small指定でも枠線でしまって見えます。</p>
+
+            <figure style="max-width: 320px;">
+                <img src="../de12/images/htmlbasic.png" alt="head要素とbody要素の説明図">
+                <figcaption>head / body の説明図（元は width="40%" 指定）</figcaption>
+            </figure>
+        </div>
+    </main>
+</body>
+</html>
