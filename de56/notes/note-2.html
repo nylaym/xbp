@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ジャケットコラージュ | XBP</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+    <logotohome>
+    <a href="../../index.html"><img src="../../images/0_XBlogo.png" alt="XBPロゴ"></a>
+    </logotohome>
+    <span class="eyebrow">デザイン演習Ⅴ・Ⅵ</span>
+    <h1>ジャケットコラージュ</h1>
+    <p class="note"><a href="../index.html">← 演習トップへ戻る</a></p>
+
+    <main id="main">
+
+        <h2>概要</h2>
+        <div class="callout">
+            <p>Spotifyプレイリストのジャケット（またはアーティスト写真）を1枚のコラージュ画像にまとめるWebツール。SNSでプレイリストをシェアする際の視覚的なフックとして、そこから実際に聴いてもらう導線をつくることを目的に個人開発した。</p>
+        </div>
+        <div>
+            <h3>背景</h3>
+            <p>自分がSpotify上であるジャンルの網羅的なプレイリストを作成する時、共有機能を使いできるだけ多くのユーザに曲の追加を募ろうと思った。そこで、より多くの人を呼び込むためのきっかけとしてジャケットを並べた画像をフックとして利用しようとした。しかし、手間がかかるため本ツールの開発により、簡単にプレイリストのジャケット写真のコラージュを生成できることを目指した。</p>
+
+            <h3>仕組み</h3>
+            <p>Spotify Web APIでログインし、自分のプレイリストを選択するとジャケット画像を取得。曲の絞り込み・並び替え・比率/解像度・レイアウトテンプレートを選んで、1枚のPNG画像として書き出せる。バックエンドは持たず、単一HTMLファイル＋ブラウザのlocalStorageのみで完結するサーバーレス構成。</p>
+        </div>
+
+        <h2>画面</h2>
+        <div>
+            <p>ログイン不要の「サンプルで試す」モードでの画面。曲を選ぶテーブルUIと、書き出されたコラージュ。</p>
+            <div class="image-row">
+                <figure>
+                    <img src="../images/jacket-collage-select.jpg" alt="曲を選ぶ画面。ジャケット一覧がテーブル形式で並び、絞り込み・ランダム抽出・重複非表示などのボタンがある">
+                    <figcaption>曲選択画面：絞り込み・ソート対応のテーブルUI</figcaption>
+                </figure>
+                <figure>
+                    <img src="../images/jacket-collage-output.jpg" alt="4×4に並んだジャケット画像のコラージュ。PNGを保存・共有ボタンがある">
+                    <figcaption>書き出されたコラージュ（1080×1080px）</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <h2>主な機能</h2>
+        <div>
+            <ul>
+                <li><strong>Spotify連携</strong>：Authorization Code + PKCEフローでログイン（クライアントシークレット不要、サーバー不要）</li>
+                <li><strong>画像ソースの切り替え</strong>：アルバムジャケット／アーティスト写真の2種類を、同じ選択・デザインUIで扱える</li>
+                <li><strong>曲選択画面</strong>：大量のトラックを想定したテーブルUI。アーティスト／アルバム／追加日での絞り込み（ポップオーバー＋複数選択）、列見出しクリックでのソート、ランダム抽出、重複アルバムの一括非表示、ドラッグ＆ドロップでの並び替え</li>
+                <li><strong>デザイン画面</strong>：アスペクト比（1:1／4:5／9:16／16:9）、解像度プリセット＋幅・高さ直接指定、3種類のレイアウトテンプレート、最大32×32（1024枚）まで対応するグリッド、隙間なく敷き詰める独自の「レンガ状」レイアウト</li>
+                <li><strong>出力</strong>：PNGダウンロード、Web Share API対応（モバイルでの直接シェア）</li>
+                <li><strong>ログイン不要のデモモード</strong>：サンプル画像で全機能を試せる</li>
+            </ul>
+        </div>
+
+        <h2>技術的に工夫した点</h2>
+        <div>
+            <h3>サーバーレスでの認証</h3>
+            <p>バックエンドを持たない構成にするため、OAuthはAuthorization Code + PKCEを採用。トークンはlocalStorageに保存し、リフレッシュも含めてクライアント側だけで完結させている。</p>
+
+            <h3>「レンガ状」レイアウトの実装</h3>
+            <p>通常のn×nグリッドだと、選択した枚数が平方数でない場合に画像の重複や余白が発生する。これを避けるため、行ごとに列数を変え、画像を過不足なく敷き詰めるjustified row方式のレイアウトアルゴリズムを実装した（画像はすべて正方形カバーとして扱えるため、行の高さを画像の合計理想サイズと利用可能な高さの比でスケールするだけで実現できる）。</p>
+
+            <h3>Spotify API仕様変更への対応</h3>
+            <p>開発中、アーティスト写真取得（<code>GET /artists</code>の一括取得）が403エラーになる問題が発生。Web検索でSpotifyの2026年2月の仕様変更ドキュメントを調査し、Development Modeアプリでは一括取得エンドポイントが廃止されている一方、単体取得（<code>GET /artists/{id}</code>）は制限対象外であることを突き止めて実装を切り替えた。エラーメッセージ自体もエンドポイントごとに正確な原因を案内するよう改善している。</p>
+
+            <h3>大規模プレイリストを前提にしたUI設計</h3>
+            <p>「曲を選ぶ」→「デザインする」の2画面構成にし、選曲は検索・絞り込み・ソート・ランダム抽出を備えたテーブルUIに寄せることで、数百曲規模のプレイリストでも実用的に扱えるようにした。</p>
+        </div>
+
+        <h2>キーワード</h2>
+        <ul class="tags">
+            <li>Vanilla JavaScript</li>
+            <li>Canvas API</li>
+            <li>Spotify Web API</li>
+            <li>OAuth PKCE</li>
+            <li>GitHub Pages</li>
+        </ul>
+
+        <h2>参考リンク</h2>
+        <div>
+            <ul>
+                <li><a href="https://nylaym.github.io/jacket-collage/jacket-collage.html" target="_blank">デモ</a></li>
+                <li><a href="https://github.com/nylaym/jacket-collage" target="_blank">リポジトリ</a></li>
+            </ul>
+        </div>
+
+    </main>
+</body>
+</html>
